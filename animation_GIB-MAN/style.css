@@ -90,6 +90,7 @@ header {
 	border-radius:12px;
 	text-decoration:none;
 	margin-right:10px;
+	transition:0.3s;
 	}
 .button a:hover{
 	color: var(--button_hover_color);
@@ -143,9 +144,9 @@ section {	width:1598px;
 	}
 .slider-button-area{
 	width:100%;
-	height:0;
+	height:0;        
 	}
-.slider-button-shadow {
+.slider-button-shadow{
 	width:240px;
 	padding:30px 30px;	
 	margin:0 auto; 
@@ -161,12 +162,17 @@ section {	width:1598px;
 	align-items:center;
 	position:relative;
 	background-color: #1A1A1A;
-	width:180px;
-	border:var(--button_border);
-	padding:15px;
+	width:174px;
+	border:2px solid #1A1A1A;
+	padding:14px 8px;
 	border-radius:12px;
 	z-index:1;
+	transition:0.5s;
 	}
+.slider-button:hover {
+	background-color: var(--button_hover_background);
+	cursor:pointer;
+}
 .slider-button a{	
 	color:#B3B3B2;
 	font-size:21px;
@@ -196,6 +202,26 @@ section {	width:1598px;
 	left:240px;
 	background-image:url('images/right.svg');
 	}
+svg {
+	position: absolute;
+	top: 15px;
+	left: 25px;
+	width: 100%;
+	height: 100%;
+	z-index:1;
+}
+rect {
+	fill: none;
+	stroke: #262626;
+	stroke-width: 2;
+	stroke-dasharray: 14 4;
+	animation: border-rotate 1s linear infinite;
+}	
+@keyframes border-rotate {
+  to {
+    stroke-dashoffset: -36;
+  }
+}
 .slider-info {
 	width:100%;
 	display:flex;
@@ -327,7 +353,6 @@ section {	width:1598px;
 	right:0;
 	}
 .photo-gallery-container {
-	height:1278px;
 	display:grid;
 	grid-template-columns:1fr 1fr 1fr;
 	}	
@@ -335,7 +360,14 @@ section {	width:1598px;
 	width:100%;
 	height:638px;
 	padding:30px;
+
 	}
+.card:nth-child(1),
+.card:nth-child(2),
+.card:nth-child(4),
+.card:nth-child(5) {
+	border-right:var(--border_dashed);
+}
 .card-img {
 	height:386px;
 	overflow:hidden;
@@ -344,7 +376,12 @@ section {	width:1598px;
 	}	
 .card-img img{
 	width:100%;
-	}	
+	transition:0.5s;
+	}
+.card-img img:hover{
+	scale:1.1;
+	cursor:pointer;
+	}
 .card-info {
 	height:163px;
 	display:flex;
@@ -356,10 +393,45 @@ section {	width:1598px;
 	justify-content:space-between;
 	align-items:center;
 }
-.card-button a:first-child {
-	padding:10px 16px;
+.anime-button {	
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	position:relative;
+	background-color: var(--button_background);
+	width:174px;
+	border: var(--button_border);
+	padding:14px 8px;
+	border-radius:12px;
+	transition: 0.5s;
+	}
+.anime-button:hover {
+	background-color: var(--button_hover_background);
+	cursor:pointer;
+}
+.anime-button a {
+	color:#B3B3B2;
+	ffont-size:21px;
+	font-weight:500;
+	text-decoration:none;
+	z-index:5;
+	}
+.anime-button img{
+	z-index:5; 
+	margin-left:7px;
+	}
+.first-button a {
+	padding:8px 16px;
 	border-radius:100px;
-	height:47px;
+	text-decoration:none;
+	border: var(--button_border);
+	color: var(--button_color);
+	background-color: var(--button_background);
+	transition:0.3s;
+	}
+.first-button a:hover {
+	color: var(--button_hover_color);
+	background-color:var(--button_hover_background);
 	}
 .fit-price{
 	display:flex;
@@ -428,17 +500,35 @@ section {	width:1598px;
 	display:flex;
 	flex-direction:column;
 	justify-content:space-between;
-	}	
-	.bottom-end-items:nth-child(1), 
-	.bottom-end-items:nth-child(2), 
-	.bottom-end-items:nth-child(3), 
-	.bottom-end-items:nth-child(4) {
+	transition:0.7s;
+	}
+.bottom-end-items:nth-child(1), 
+.bottom-end-items:nth-child(2), 
+.bottom-end-items:nth-child(3), 
+.bottom-end-items:nth-child(4) {
 	border-bottom: var(--border_dashed);
 }
-	.bottom-end-items:nth-child(1), 
-	.bottom-end-items:nth-child(3), 
-	.bottom-end-items:nth-child(5) {
+.bottom-end-items:nth-child(5) {
+	border-radius:0 0 0 20px;
+}
+.bottom-end-items:nth-child(6) {
+	border-radius:0 0 20px 0;
+}
+.bottom-end-items:nth-child(1), 
+.bottom-end-items:nth-child(3), 
+.bottom-end-items:nth-child(5) {
 	border-right: var(--border_dashed);
+}
+.bottom-end-items h3{
+	cursor:pointer;
+	transition:0.3s;
+	}
+.bottom-end-items:hover{
+	background-color: var(--button_hover_background);
+	}
+.bottom-end-items h3:hover{
+	color:rgb(255,186,117);
+	
 }
 footer {
 	width:1920px;
@@ -462,17 +552,37 @@ footer {
 	font-weight:900;
    	color:#CCCCCC;
 	}
+.footer-logo img:hover{cursor:pointer;}
 .footer-social-icons img{
 	padding:16px;
 	border-radius:12px;
 	background-color:#D6CDC2;
 	margin-right:20px;
-	transition: 0.5s;
+	position:relative;
+}
+.footer-social-icons img{	
+  animation-name: social_icon_anime;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+	}
+.footer-social-icons img:nth-child(2){
+  animation-delay: 0.25s;
+}
+.footer-social-icons img:nth-child(3){
+  animation-delay: 0.5s;
+}
+.footer-social-icons img:nth-child(4){
+  animation-delay: 0.75s;
+}
+@keyframes social_icon_anime {
+from {top:0px;}
+to {top:-15px;}
 }
 .footer-social-icons img:hover{
-	vbackground-color:#262626;
 	cursor:pointer;
-	transform: scale(1.2);
+	transform: scale(1.1);
 }
 .footer-nav {	
 	border-top: var(--border_dashed);
@@ -485,6 +595,16 @@ footer {
 	justify-content:space-between;
 	align-items:center;
 }
+.footer-nav-content a{
+	color:#B3B3B2;
+	text-decoration:none;
+	transition: transform 0.5s ease-in-out;
+	display: inline-block;
+	}
+.footer-nav-content a:hover{
+	transform: scale(1.1);
+	color:#d2B4A3;
+	}
 .footer-nav-content h3 {
 	margin-bottom:20px;
 	}
@@ -496,18 +616,45 @@ footer {
 	border-radius:12px;
 	border:none;
 	}
+
 .footer-nav-home-subscribe input[placeholder] {
-	font-size:20px;
+ 	font-size:20px;
 	padding:0 30px;
-	color:#fff;
+	color:#fff;}
+.footer-nav-home-subscribe input {	
+    padding: 0px 30px;
+    font-size: 20px;
+    border-radius: 12px;
+    outline: none;
+    position: relative;
 }
+input::placeholder {
+    color: transparent;
+  }
+.footer-nav-home-subscribe label {
+    position: absolute;
+    top: 75%; 
+    left: 30px;
+    font-size: 18px;
+    color: #FFF;
+    transition: all 0.2s linear; 
+    transform: translateY(-50%);
+		font-weight:400;
+  }
+.footer-nav-home-subscribe input:focus + label,
+.footer-nav-home-subscribe input:not(:placeholder-shown) + label {
+    top: 48%;
+    left: 15px;
+	font-size: 14px;
+	font-weight:400;
+  }
 .send_mail {
-  position: absolute;
-  right: 30px;
-  top: 80px;
-  background: none;
-  border: none;
-  cursor: pointer;
+	position: absolute;
+	right: 30px;
+	top: 80px;
+	background: none;
+	border: none;
+	cursor: pointer;
 }
 .footer-bottom {
 	border-top: var(--border_dashed);
@@ -527,3 +674,55 @@ footer {
 	font-weight:400;
 	text-decoration:none;
 	}
+	
+	
+	/* ანიმაციური ბუთონი კუთხეში რკალებით  */
+	
+	
+.angle_t_l,
+.angle_t_r,
+.angle_b_r,
+.angle_b_l 
+{
+	position: absolute;
+	transition: 0.5s;
+	opacity:0;
+	scale: 0;
+}
+.angle_t_l
+{
+	left: 10px;
+	top: 5px;
+}
+.angle_t_r {
+	right: 10px;
+	top: 5px;
+}
+.angle_b_r {
+	right: 10px;
+	bottom: 1px;
+}
+.angle_b_l {
+	left: 10px;
+	bottom: 1px;
+}
+.angle-anime:hover .angle_t_l {
+	transform: translate(-16px, -4px);
+	scale: 1;
+	opacity:0.7;
+}
+.angle-anime:hover .angle_t_r {
+	transform: translate(9px, -4px);
+	scale: 1;
+	opacity:0.7;
+}
+.angle-anime:hover .angle_b_r {
+	transform: translate(9px, 5px);
+	scale: 1;
+	opacity:0.7;
+}
+.angle-anime:hover .angle_b_l {
+	transform: translate(-16px, 5px);
+	scale: 1;
+	opacity:0.7;
+}
